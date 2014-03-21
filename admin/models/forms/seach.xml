@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset>
+
+		<field name="id" type="hidden" default="0" label="COM_FIELDSATTACHSEARCH_FORM_LBL_SEACH_ID"
+            readonly="true" class="readonly"
+            description="JGLOBAL_FIELD_ID_DESC" /> 
+
+       <field name="title" type="text"
+                
+		label="COM_FIELDSATTACHSEARCH_FORM_LBL_SEACH_TITLE"
+		description="COM_FIELDSATTACHSEARCH_FORM_DESC_SEACH_TITLE"
+		class="inputbox input-xxlarge input-large-text"
+		size="40"
+		required="true"
+                
+                
+                
+            filter="raw" />
+       
+       <field
+		id="catids"
+		name="catids"
+		type="category"
+		extension="com_content"
+		label="JCATEGORY"
+		description="JFIELD_CATEGORY_DESC"
+		class="inputbox" 
+		multiple="true">
+	</field>
+
+       <field name="fields" type="hidden" 
+		label="COM_FIELDSATTACHSEARCH_FORM_LBL_SEACH_FIELDS"
+		description="COM_FIELDSATTACHSEARCH_FORM_DESC_SEACH_FIELDS"  
+                required="true"
+                 />
+       
+        <field name="templateform" type="textarea" 
+		label="COM_FIELDSATTACHSEARCH_FORM_LBL_SEACH_TEMPLATEFORM"
+		description="COM_FIELDSATTACHSEARCH_FORM_DESC_SEACH_TEMPLATEFORM"
+	        class="inputbox textarea" rows="20" cols="130" filter="raw"
+                
+                
+                 />
+                 
+                 <field name="templatejavascript" type="textarea" 
+		label="COM_FIELDSATTACHSEARCH_FORM_LBL_SEACH_JAVASCRIPT"
+		description="COM_FIELDSATTACHSEARCH_FORM_LBL_SEACH_JAVASCRIPT"
+	        class="inputbox textarea" rows="20" cols="130" filter="raw"
+                
+                
+                 />
+                 
+	<field name="templatestate" type="list" label="COM_FIELDSATTACHSEARCH_FORM_LBL_SEACH_TEMPLATESTATE"
+			description="COM_FIELDSATTACHSEARCH_FORM_DESC_SEACH_TEMPLATESTATE" class="chzn-color"
+			  size="1" default="0"
+		>
+			<option value="1">
+				JMANUAL</option>
+			<option value="0">
+				JDEFAULT</option>
+			 
+		</field>
+	
+	<field name="ordering" type="list"
+		default="0"
+		description="COM_SEARCH_ORDERING_DESC"
+		label="COM_SEARCH_ORDERING_LABEL"
+	>
+		<option value="newest">COM_SEARCH_NEWEST_FIRST</option>
+		<option value="oldest">COM_SEARCH_OLDEST_FIRST</option>
+		<option value="popular">COM_SEARCH_MOST_POPULAR</option>
+		<option value="alpha">COM_SEARCH_ALPHABETICAL</option>
+		<option value="category">JCATEGORY</option>
+	</field>
+	
+	<field
+	name="limit"
+	type="text" 
+	size="10"
+	default="20"
+	label="Default List Limit" > 
+	</field>
+	 
+       
+       
+
+         <field
+        name="state"
+        type="list"
+        label="JSTATUS"
+        description="JFIELD_PUBLISHED_DESC"
+        class="chzn-color-state"
+        size="1"
+        default="1">
+        <option value="1">JPUBLISHED</option>
+        <option value="0">JUNPUBLISHED</option>
+    </field>
+
+	</fieldset>
+
+</form>

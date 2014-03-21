@@ -1,0 +1,16 @@
+.icon-48-seachs {
+      background-image: url(../images/l_seachs.png);
+      padding-left:60px!important;
+}
+
+.icon-48-seach {
+      background-image: url(../images/l_seachs.png);
+      padding-left:60px!important;
+}
+
+/**/
+
+#listjson{margin-top: 20px; list-style: none; padding: 0px; }
+#listjson li{  border-bottom: 1px dotted #111; padding: 10px 0 20px 10px; background-color: #eee;}
+
+.textarea{ width: 100%;}

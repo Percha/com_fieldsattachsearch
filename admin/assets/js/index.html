@@ -1,0 +1,120 @@
+<!doctype html>
+ 
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>jQuery UI Sortable - Connect lists</title>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> 
+  <script src="widget.js"></script>
+  <script src="wrapper.js"></script>
+  <script src="application.js"></script>
+  <script> 
+
+  $(function() {
+	//wrappers.init();
+	application.init();
+	
+	function writeCode(id)
+	{
+		var str = '';
+	      
+		// var tmp = String(name).split("_");
+	      
+	      
+		$('#sortable2 .ui-div').each(function(){
+			// some more code here
+			//alert($(this).attr("class"));
+			str += '<div>';
+			$(this).find("li").each(function(){
+				//alert($(this).attr("id"));
+				id=$(this).attr("id");
+				var code = Arraytmp[id];
+				str += code;
+				})
+			str += '</div>';
+		});
+	      
+	     
+		$("#codigo").val(str);
+	}
+  
+	//Object code
+  
+	person=new Object();
+	person.code="John";
+	
+	Arraytmp = new Object();
+	
+	Arraytmp["type_1"]= 'code1';
+	Arraytmp["type_2"]= 'code2';
+	Arraytmp["type_3"]= 'code3';
+	Arraytmp["type_4"]= 'code4';
+	Arraytmp["type_5"]= 'code5';
+	  
+  
+  });
+  </script>
+   <style>
+  #sortable1, #sortable2, #sortable3 , .connectedSortable2{ list-style-type: none; margin: 0; padding: 0; float: left; margin-right: 10px; background: #eee; padding: 5px;}
+   #sortable1,#sortable3{ width:20%;}
+  #sortable2 {width: 55%; background-color: #f00; }
+  #sortable1 li, #sortable2 li, #sortable3 li { margin: 5px; padding: 5px; font-size: 1.2em; width: 100%; }
+   #sortable2 li{  width:70%;}
+   
+   .connectedSortable2{  width:100%;overflow: hidden;margin-top: 10px; margin-bottom: 20px;padding-top: 10px; padding-bottom: 10px;}
+   .connectedSortable2 li{  width:100%;}
+  
+  .ui-state-default{ overflow: hidden;}
+  
+  .wrapper{ display: block; width: 100%; overflow: hidden;}
+  </style>
+</head>
+<body>
+ <div class="wrapper">
+<ul id="sortable1" class="connectedSortable">
+  <li id="type_1" class="ui-div ui-accordion ui-widget ui-helper-reset ">
+	<div class="ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-accordion-header-active ui-state-active ui-corner-top">
+		Item 1
+	</div>
+	<div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+		<form id="type_1_parameters" name="type_1_parameters">
+			<label for="id">Id</label>
+			<input type="text" name="id" value="" />
+			<label for="class">Class</label>
+			<input type="text" name="class" value="" />
+			<label for="style">Style</label>
+			<textarea type="text" name="style"></textarea>
+			
+		</form>
+	</div>
+  </li>
+  <li id="type_2" class="ui-div ui-accordion ui-widget ui-helper-reset ">
+	<div class="ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-accordion-header-active ui-state-active ui-corner-top">
+		Item 2
+	</div>
+	<div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+		dos
+	</div>
+  </li> 
+</ul>
+
+ 
+<ul id="sortable2" class="connectedSortable sortable1">
+   
+</ul>
+
+
+<ul id="sortable3" class="connectedSortable2">
+  <li id="type_1" class="ui-state-default">Item 1</li>
+  <li id="type_2" class="ui-state-default">Item 2</li>
+  <li id="type_3" class="ui-state-default">Item 3</li>
+  <li id="type_4" class="ui-state-default">Item 4</li>
+  <li id="type_5" class="ui-state-default">Item 5</li>
+</ul>
+</div>
+ 
+<textarea id="codigo" name="codigo"></textarea>
+</body>
+</html>
