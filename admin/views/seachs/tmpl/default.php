@@ -53,6 +53,8 @@ if (!empty($this->extra_sidebar)) {
 }
 ?>
 
+<?php echo $this->alerts;?>
+
 <form action="<?php echo JRoute::_('index.php?option=com_fieldsattachsearch&view=seachs'); ?>" method="post" name="adminForm" id="adminForm">
 <?php if(!empty($this->sidebar)): ?>
 	<div id="j-sidebar-container" class="span2">
