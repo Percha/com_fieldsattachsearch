@@ -83,6 +83,12 @@ class JFormFieldSearchFieldsattach extends JFormField
 		 }
 		  $html .= '</select>';
 	       }
+	// no values found, so print a userfriendly message
+	else {
+		$html .='<span>';
+		$html .= JTEXT::_("SEARCHFIELDSATTACH_NO_SEARCHES_FOUND");
+		$html .='</span>';
+	}
      //$html .= "\n".'<input type="hidden" id="'.$this->id.'" name="'.$this->name.'" value="'.$this->value.'" />';
 
         return $html;
