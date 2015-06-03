@@ -127,7 +127,13 @@ JFactory::getDocument()->addScriptDeclaration($script);
 JFactory::getDocument()->addScript(JURI::root() ."administrator/components/com_fieldsattachsearch/assets/js/application.js");
 
 ?>
+<?php 
+	//var_dump($this->form->getField('ordering')); 
 
+	//$obj = $this->form->getField('ordering')
+
+	//$this->form->setValue();
+?>
 <form action="<?php echo JRoute::_('index.php?option=com_fieldsattachsearch&layout=edit&id=' . (int) $this->item->id); ?>" method="post" enctype="multipart/form-data" name="adminForm" id="seach-form" class="form-validate">
     <div class="row-fluid">
         <div class="span12 form-horizontal">
@@ -144,7 +150,7 @@ JFactory::getDocument()->addScript(JURI::root() ."administrator/components/com_f
 	    <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'general', JText::_('COM_FIELDSATTACHSEARCH_GENERAL', true)); ?>
 	    <div class="row-fluid">
 		<fieldset class="adminform">
-			<div class="span9">   
+			<div class="span8">   
 			    <div class="control-group">
 				    <div class="control-label"><?php echo $this->form->getLabel('fields'); ?></div>
 				    <div class="controls"><?php echo $this->form->getInput('fields'); ?></div>
@@ -157,27 +163,32 @@ JFactory::getDocument()->addScript(JURI::root() ."administrator/components/com_f
 			    </div>
 			</div>
 			
-			<div class="span3">
+			<div class="span4">
 			    <div class="row-fluid form-horizontal-desktop"> 
-				<div class="control-group">
-				    <div class="control-label"><?php echo $this->form->getLabel('state'); ?></div>
-				    <div class="controls"><?php echo $this->form->getInput('state'); ?></div>
-			       </div>
-				<div class="control-group">
-				    <div class="control-label"><?php echo $this->form->getLabel('catids'); ?></div>
-				    <div class="controls"><?php echo $this->form->getInput('catids'); ?></div>
-			       </div>
-				<div class="control-group">
-				    <div class="control-label"><?php echo $this->form->getLabel('ordering'); ?></div>
-				    <div class="controls"><?php echo $this->form->getInput('ordering'); ?></div>
-			       </div>
-				<div class="control-group">
-				    <div class="control-label"><?php echo $this->form->getLabel('limit'); ?></div>
-				    <div class="controls"><?php echo $this->form->getInput('limit'); ?></div>
-			       </div>
-				
-				
-				
+			    	<div class="control-group">
+			    		<h3><?php echo JText::_('COM_FIELDSATTACHSEARCH_OPTIONS'); ?></h3>
+			    	</div>
+					<div class="control-group">
+					    <div class="control-label"><?php echo $this->form->getLabel('state'); ?></div>
+					    <div class="controls"><?php echo $this->form->getInput('state'); ?></div>
+				    </div>
+					<div class="control-group">
+					    <div class="control-label"><?php echo $this->form->getLabel('catids'); ?></div>
+					    <div class="controls"><?php echo $this->form->getInput('catids'); ?></div>
+				    </div>
+ 
+				    <div class="control-group">
+						
+					    <div class="control-label"><?php echo JText::_('COM_FIELDSATTACHSEARCH_ORDER'); ?></div>
+					    <div class="controls"><?php echo FieldsattachsearchHelper::getOrdering($this->form->getValue('fields'), $this->form->getValue('ordering')); ?>
+					    	 
+					    </div>
+
+				    </div>
+					<div class="control-group">
+					    <div class="control-label"><?php echo $this->form->getLabel('limit'); ?></div>
+					    <div class="controls"><?php echo $this->form->getInput('limit'); ?></div>
+				    </div> 
 			    </div>
 			</div>
 			    
