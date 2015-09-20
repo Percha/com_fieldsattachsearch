@@ -63,7 +63,7 @@ class JFormFieldSearchFieldsattach extends JFormField
 
           //now get to the business of finding the articles
 
-          $db = &JFactory::getDBO();
+          $db = JFactory::getDBO();
           $query = 'SELECT * FROM #__fieldsattachsearch_layout WHERE state=1 ORDER BY title';
 	  
           $db->setQuery( $query );

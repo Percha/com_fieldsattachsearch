@@ -50,9 +50,9 @@ class fieldsattachsearchViewsearch extends JViewLegacy
 		
 		$params 		= $app->getParams();
 		$searchid 		= JRequest::getVar("Search");
-		$this->_jsonfields	= FieldsattachsearchHelper::getJson($searchid);
+		$this->_jsonfields		= FieldsattachsearchHelper::getJson($searchid);
 		$this->_templateHTML	= FieldsattachsearchHelper::getTemplate($searchid);
-		$this->script		= FieldsattachsearchHelper::getScript($searchid);
+		$this->script			= FieldsattachsearchHelper::getScript($searchid);
 		 
 		
 		if (($error == null)) {
@@ -63,7 +63,7 @@ class fieldsattachsearchViewsearch extends JViewLegacy
 		
 		
                 //Add filter script
-                $doc =& JFactory::getDocument(); 
+                $doc =JFactory::getDocument(); 
                 $doc->addScriptDeclaration($this->script); 
 		 
 		
@@ -329,6 +329,7 @@ class fieldsattachsearchViewsearch extends JViewLegacy
 						$tmpparameters[]	= $object->fieldid;
 						$tmpparameters[]	= JRequest::getVar("field_".$object->fieldid, $object->initvalue);
 						$tmpparameters[] 	= $obj->extras;
+						
 						
 						$object->html = call_user_func_array($function,$tmpparameters);
 						
