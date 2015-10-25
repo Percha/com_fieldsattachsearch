@@ -61,10 +61,7 @@ class fieldsattachsearchViewsearch extends JViewLegacy
 			$pagination	= $this->get('pagination');
 		}
 
-		//Add parameters of searching **** 
-		//$pagination->setAdditionalUrlParam('colossssr', 'red'); 
-
-		 
+		//Add parameters of searching ****  
 		$fieldsform = json_decode($this->_jsonfields);
 		foreach($fieldsform as $mydata) 
 	    {
@@ -73,7 +70,6 @@ class fieldsattachsearchViewsearch extends JViewLegacy
 	         $pagination->setAdditionalUrlParam($name, JRequest::getVar($name)); 
 	         
 	    }     
-
 		
 		
                 //Add filter script
