@@ -23,10 +23,10 @@ class FieldsattachsearchHelper
 	 * @param id   
 	 * @return string
 	 */
-        public function getCategories($id)
+        public static function getCategories($id)
 	{ 
 		 
-		$db = JFactory::getDbo(); 
+		 
 
 		$db = JFactory::getDbo();
 		$query = 'SELECT a.catids'
@@ -47,10 +47,10 @@ class FieldsattachsearchHelper
 	 * @param id   
 	 * @return string
 	 */
-        public function getJson($id)
+     public static function getJson($id)
 	{ 
 		 
-		$db = JFactory::getDbo(); 
+		 
 
 		$db = JFactory::getDbo();
 		$query = 'SELECT a.fields'
@@ -70,9 +70,9 @@ class FieldsattachsearchHelper
 	 * @param id   
 	 * @return string
 	 */
-	function getInfo($fieldid)
+	static function getInfo($fieldid)
         {
-            $db = &JFactory::getDBO(  );
+            $db = JFactory::getDBO(  );
             
             $query = 'SELECT a.title, a.type, a.extras  FROM #__fieldsattach as a  WHERE a.id = '.$fieldid;
             //echo $query;
@@ -90,9 +90,9 @@ class FieldsattachsearchHelper
 	 * @param id   
 	 * @return string
 	 */
-	function getOrdering($id)
+	static  function getOrdering($id)
         {
-		$db = JFactory::getDbo(); 
+		 
 
 		$db = JFactory::getDbo();
 		$query = 'SELECT a.ordering'
@@ -112,9 +112,9 @@ class FieldsattachsearchHelper
 	 * @param id   
 	 * @return string
 	 */
-	function getLimit($id)
+	static  function getLimit($id)
         {
-		$db = JFactory::getDbo(); 
+		 
 
 		$db = JFactory::getDbo();
 		$query = 'SELECT a.limit'
@@ -136,10 +136,10 @@ class FieldsattachsearchHelper
 	 * @param id   
 	 * @return string
 	 */
-        public function getTemplate($id)
+      static   public function getTemplate($id)
 	{ 
 		 
-		$db = JFactory::getDbo(); 
+		 
 
 		$db = JFactory::getDbo();
 		$query = 'SELECT a.templateform'
@@ -161,10 +161,10 @@ class FieldsattachsearchHelper
 	 * @param id   
 	 * @return string
 	 */
-        public function getScript($id)
+     static    public function getScript($id)
 	{ 
 		 
-		$db = JFactory::getDbo(); 
+	 
 
 		$db = JFactory::getDbo();
 		$query = 'SELECT a.templatejavascript'

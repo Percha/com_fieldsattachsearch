@@ -60,20 +60,10 @@ class fieldsattachsearchViewsearch extends JViewLegacy
 			$total		= $this->get('total');
 			$pagination	= $this->get('pagination');
 		}
-
-		//Add parameters of searching ****  
-		$fieldsform = json_decode($this->_jsonfields);
-		foreach($fieldsform as $mydata) 
-	    {
-	          
-	         $name = 'field_'.$mydata->fieldid;
-	         $pagination->setAdditionalUrlParam($name, JRequest::getVar($name)); 
-	         
-	    }     
 		
 		
                 //Add filter script
-                $doc =JFactory::getDocument(); 
+                $doc = JFactory::getDocument(); 
                 $doc->addScriptDeclaration($this->script); 
 		 
 		
@@ -339,7 +329,6 @@ class fieldsattachsearchViewsearch extends JViewLegacy
 						$tmpparameters[]	= $object->fieldid;
 						$tmpparameters[]	= JRequest::getVar("field_".$object->fieldid, $object->initvalue);
 						$tmpparameters[] 	= $obj->extras;
-						
 						
 						$object->html = call_user_func_array($function,$tmpparameters);
 						
