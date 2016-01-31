@@ -16,7 +16,6 @@ JHtml::_('behavior.formvalidation');
 JHtml::_('formbehavior.chosen', 'select');
 JHtml::_('behavior.keepalive'); 
 
-
 // Import CSS
 $document = JFactory::getDocument();
 $document->addStyleSheet('components/com_fieldsattachsearch/assets/css/fieldsattachsearch.css');
