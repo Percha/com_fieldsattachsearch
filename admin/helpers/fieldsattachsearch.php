@@ -7,179 +7,54 @@
  * @author      Cristian Grañó <cristian@percha.com> - http://www.percha.com
  */
 
+// No direct access
 defined('_JEXEC') or die;
 
+/**
+ * Fieldsattachsearch helper.
+ */
 class FieldsattachsearchHelper
 {
-	public static function myFunction()
+	
+	/**
+	 * Configure the Linkbar.
+	 */
+	public static function addSubmenu($vName = '')
 	{
-		$result = 'Something';
+		JHtmlSidebar::addEntry(
+			JText::_('COM_FIELDSATTACHSEARCH_TITLE_SEACHS'),
+			'index.php?option=com_fieldsattachsearch&view=seachs',
+			$vName == 'seachs'
+		);
+		/*JHtmlSidebar::addEntry(
+			JText::_('COM_FIELDSATTACHSEARCH_TITLE_FIELDS'),
+			'index.php?option=com_fieldsattachsearch&view=fields',
+			$vName == 'fields'
+		);*/
+
+	}
+
+	/**
+	 * Gets a list of the actions that can be performed.
+	 *
+	 * @return	JObject
+	 * @since	1.6
+	 */
+	public static function getActions()
+	{
+		$user	= JFactory::getUser();
+		$result	= new JObject;
+
+		$assetName = 'com_fieldsattachsearch';
+
+		$actions = array(
+			'core.admin', 'core.manage', 'core.create', 'core.edit', 'core.edit.own', 'core.edit.state', 'core.delete'
+		);
+
+		foreach ($actions as $action) {
+			$result->set($action, $user->authorise($action, $assetName));
+		}
+
 		return $result;
 	}
-	
-	/**
-	 * returns string of catids
-	 *
-	 * @param id   
-	 * @return string
-	 */
-    public static function getCategories($id)
-	{ 
-		 
-		$db = JFactory::getDbo(); 
-
-		$db = JFactory::getDbo();
-		$query = 'SELECT a.catids'
-		. ' FROM #__fieldsattachsearch_layout as a' 
-		. ' WHERE  a.id = '.$id.' and a.state=1' 
-		;
-		
-		$db->setQuery($query);
-		$row = $db->loadResult(); 
-            
-
-		return $row;  
-	}
-	
-	/**
-	 * returns string of catids
-	 *
-	 * @param id   
-	 * @return string
-	 */
-    public static  function getJson($id)
-	{ 
-		 
-		$db = JFactory::getDbo(); 
-
-		$db = JFactory::getDbo();
-		$query = 'SELECT a.fields'
-		. ' FROM #__fieldsattachsearch_layout as a' 
-		. ' WHERE  a.id = '.$id.' and a.state=1' 
-		;
-		
-		$db->setQuery($query);
-		$row = $db->loadResult(); 
-            
-
-		return $row;  
-	}
-	/**
-	 * returns string of catids
-	 *
-	 * @param id   
-	 * @return string
-	 */
-	public static function getInfo($fieldid)
-        {
-            $db = JFactory::getDBO(  );
-            
-            $query = 'SELECT a.title, a.type, a.extras  FROM #__fieldsattach as a  WHERE a.id = '.$fieldid;
-            //echo $query;
-	    
-            $db->setQuery( $query );
-	    $result = $db->loadObject();
-            $str = "";
-            if(!empty($result)) $str = $result;
-	    return $str;
-        }
-	
-	/**
-	 * returns string of catids
-	 *
-	 * @param id   
-	 * @return string
-	 */
-	public static function getOrdering($id)
-        {
-		$db = JFactory::getDbo(); 
-
-		$db = JFactory::getDbo();
-		$query = 'SELECT a.ordering'
-		. ' FROM #__fieldsattachsearch_layout as a' 
-		. ' WHERE  a.id = '.$id.' and a.state=1' 
-		;
-		
-		$db->setQuery($query);
-		$row = $db->loadResult();
-		
-		return $row;
-        }
-	
-	/**
-	 * returns string of catids
-	 *
-	 * @param id   
-	 * @return string
-	 */
-	public static function getLimit($id)
-        {
-		$db = JFactory::getDbo(); 
-
-		$db = JFactory::getDbo();
-		$query = 'SELECT a.limit'
-		. ' FROM #__fieldsattachsearch_layout as a' 
-		. ' WHERE  a.id = '.$id.' and a.state=1' 
-		;
-		
-		$db->setQuery($query);
-		$row = $db->loadResult();
-		
-		return $row;
-        }
-	
-	 
-	
-	/**
-	 * returns string of catids
-	 *
-	 * @param id   
-	 * @return string
-	 */
-        public static function getTemplate($id)
-	{ 
-		 
-		$db = JFactory::getDbo(); 
-
-		$db = JFactory::getDbo();
-		$query = 'SELECT a.templateform'
-		. ' FROM #__fieldsattachsearch_layout as a' 
-		. ' WHERE  a.id = '.$id.' and a.state=1' 
-		;
-		
-		$db->setQuery($query);
-		$row = $db->loadResult(); 
-            
-
-		return $row;  
-	}
-	
-	
-	/**
-	 * returns string of catids
-	 *
-	 * @param id   
-	 * @return string
-	 */
-     public static function getScript($id)
-	{ 
-		 
-		$db = JFactory::getDbo(); 
-
-		$db = JFactory::getDbo();
-		$query = 'SELECT a.templatejavascript'
-		. ' FROM #__fieldsattachsearch_layout as a' 
-		. ' WHERE  a.id = '.$id.' and a.state=1' 
-		;
-		
-		$db->setQuery($query);
-		$row = $db->loadResult(); 
-            
-
-		return $row;  
-	}
-	
-	 
-
 }
-
