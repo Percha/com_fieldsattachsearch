@@ -21,7 +21,8 @@ $document = JFactory::getDocument();
 $document->addStyleSheet('components/com_fieldsattachsearch/assets/css/fieldsattachsearch.css');
 
 $link	= 'index.php?option=com_fieldsattach&view=fieldsattachunidades&layout=modal&tmpl=component&function=jSelectFields&object='.(int) $this->item->id;
-          
+
+         
 ?> 
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> 
 <script type="text/javascript">
