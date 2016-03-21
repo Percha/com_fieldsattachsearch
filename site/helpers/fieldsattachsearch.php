@@ -24,10 +24,7 @@ class FieldsattachsearchHelper
 	 * @return string
 	 */
         public static function getCategories($id)
-	{ 
-		 
-		 
-
+	{  
 		$db = JFactory::getDbo();
 		$query = 'SELECT a.catids'
 		. ' FROM #__fieldsattachsearch_layout as a' 
@@ -177,6 +174,70 @@ class FieldsattachsearchHelper
             
 
 		return $row;  
+	}
+
+	/**
+	 * returns HTML 
+	 *
+	 * @param objects JSON   
+	 * @return string HTML
+	 */
+	static public function getTemplateForm($objects)
+	{
+		 
+		foreach($objects as $object)
+		{
+			//echo "<br />".$object->fieldid;
+			if($object->fieldid>0){
+				$obj = FieldsattachsearchHelper::getInfo($object->fieldid); 
+				$type = $obj->type;
+				 
+				JPluginHelper::importPlugin('fieldsattachment'); // very important
+				$function  = "plgfieldsattachment_".$obj->type."::searchinput";
+				$bool = method_exists("plgfieldsattachment_".$obj->type,"searchinput");
+				 
+				 
+				if($bool){
+					if($object->condition == "BETWEEN")
+					{
+						$val1 = JRequest::getVar("field_".$object->fieldid, $object->initvalue);
+						if(!empty($object->initvalue_2)) $val2 = JRequest::getVar("field_".$object->fieldid."_2", $object->initvalue_2);
+						else $val2 =  JRequest::getVar("field_".$object->fieldid."_2");
+						$object->html = '<input name="field_'.$object->fieldid.'" id="field_'.$object->fieldid.'" value="'.$val1.'" />';
+						$object->html .= ' '.JText::_("TO").' ';
+						$object->html .= '<input name="field_'.$object->fieldid.'_2" id="field_'.$object->fieldid.'_2" value="'.$val2.'" />';
+						$templateHTML = str_replace("{field_".$object->fieldid."}",'<label for="">'.JText::_($object->title).'</label>'.$object->html, $templateHTML);
+
+					}else{
+						 
+						$tmpparameters = array();
+						$tmpparameters[]	= $object->fieldid;
+						$tmpparameters[]	= JRequest::getVar("field_".$object->fieldid, $object->initvalue);
+						$tmpparameters[] 	= $obj->extras;
+						
+						$object->html = call_user_func_array($function,$tmpparameters);
+						
+						//REMOVE DIV WRAPPER CONTENT
+						$object->html = preg_replace("/<\/?div[^>]*\>/i", "", $object->html);
+						echo $object->html;
+						$templateHTML = str_replace("{field_".$object->fieldid."}",'<label for="">'.JText::_($object->title).'</label>'.$object->html, $templateHTML);
+					}
+				}else{
+					$templateHTML = str_replace("{field_".$object->fieldid."}",'<div class="alert"><a class="close" data-dismiss="alert">×</a><strong>'.JText::_("COM_FIELDSATTACHSEARCH_INPUTERROR").'</strong></div>', $templateHTML);
+
+				}
+				
+				}else{
+				if($object->fieldid == -1){
+					
+					$valor = JRequest::getVar("searchword", $object->initvalue);
+					$templateHTML = str_replace("{field_".$object->fieldid."}",'<label for="searchword">'.JText::_("COM_FIELDSATTACHSEARCH_SEARCHLABEL").'</label><input type="text" name="searchword" id="search-searchword" size="30" value="'.$this->escape($valor).'" class="inputbox" />', $templateHTML);
+
+				}
+			}
+		}
+
+		return $templateHTML;
 	}
 	
 	 

@@ -32,13 +32,14 @@ class fieldsattachsearchViewsearch extends JViewLegacy
 {
 	public $_jsonfields	=	null;
 	public $_template	=	null;
-	private $_script		=	null;
+	private $_script	=	null;
 	
 	function display($tpl = null)
 	{
-                //echo JPATH_ADMINISTRATOR.DS.'components/com_search/helpers/search.php';
-                //require_once JPATH_ADMINISTRATOR.DS.'components/com_search/helpers/search.php';
+        //echo JPATH_ADMINISTRATOR.DS.'components/com_search/helpers/search.php';
+        //require_once JPATH_ADMINISTRATOR.DS.'components/com_search/helpers/search.php';
 		//require_once JPATH_COMPONENT_ADMINISTRATOR.'/helpers/search.php';
+
 		$app		= JFactory::getApplication();
 		$state		= $this->get('state');
 		$searchword     = $state->get('keyword');
@@ -62,9 +63,9 @@ class fieldsattachsearchViewsearch extends JViewLegacy
 		}
 		
 		
-                //Add filter script
-                $doc = JFactory::getDocument(); 
-                $doc->addScriptDeclaration($this->script); 
+        //Add filter script
+        $doc = JFactory::getDocument(); 
+        $doc->addScriptDeclaration($this->script); 
 		 
 		
 		$this->assignRef('params',		$params);
@@ -302,7 +303,10 @@ class fieldsattachsearchViewsearch extends JViewLegacy
 	function getForm()
 	{ 
 		$objects = json_decode($this->_jsonfields);
-		foreach($objects as $object)
+		//$this->_templateHTML="";
+		$this->_templateHTML = FieldsattachsearchHelper::getTemplateForm($objects); 
+
+		/*foreach($objects as $object)
 		{
 			//echo "<br />".$object->fieldid;
 			if($object->fieldid>0){
@@ -350,7 +354,7 @@ class fieldsattachsearchViewsearch extends JViewLegacy
 
 				}
 			}
-		}
+		}*/
 		
 		return $this->_templateHTML;
 	}
