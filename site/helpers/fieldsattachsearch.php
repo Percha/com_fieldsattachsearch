@@ -182,7 +182,7 @@ class FieldsattachsearchHelper
 	 * @param objects JSON   
 	 * @return string HTML
 	 */
-	static public function getTemplateForm($objects)
+	static public function getTemplateForm($objects, $templateHTML)
 	{
 		 
 		foreach($objects as $object)
@@ -219,8 +219,9 @@ class FieldsattachsearchHelper
 						
 						//REMOVE DIV WRAPPER CONTENT
 						$object->html = preg_replace("/<\/?div[^>]*\>/i", "", $object->html);
-						echo $object->html;
+						 
 						$templateHTML = str_replace("{field_".$object->fieldid."}",'<label for="">'.JText::_($object->title).'</label>'.$object->html, $templateHTML);
+						 
 					}
 				}else{
 					$templateHTML = str_replace("{field_".$object->fieldid."}",'<div class="alert"><a class="close" data-dismiss="alert">×</a><strong>'.JText::_("COM_FIELDSATTACHSEARCH_INPUTERROR").'</strong></div>', $templateHTML);

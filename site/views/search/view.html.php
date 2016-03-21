@@ -304,7 +304,7 @@ class fieldsattachsearchViewsearch extends JViewLegacy
 	{ 
 		$objects = json_decode($this->_jsonfields);
 		//$this->_templateHTML="";
-		$this->_templateHTML = FieldsattachsearchHelper::getTemplateForm($objects); 
+		$this->_templateHTML = FieldsattachsearchHelper::getTemplateForm($objects, $this->_templateHTML); 
 
 		/*foreach($objects as $object)
 		{
