@@ -232,7 +232,7 @@ class FieldsattachsearchHelper
 				if($object->fieldid == -1){
 					
 					$valor = JRequest::getVar("searchword", $object->initvalue);
-					$templateHTML = str_replace("{field_".$object->fieldid."}",'<label for="searchword">'.JText::_("COM_FIELDSATTACHSEARCH_SEARCHLABEL").'</label><input type="text" name="searchword" id="search-searchword" size="30" value="'.$this->escape($valor).'" class="inputbox" />', $templateHTML);
+					$templateHTML = str_replace("{field_".$object->fieldid."}",'<label for="searchword">'.JText::_("COM_FIELDSATTACHSEARCH_SEARCHLABEL").'</label><input type="text" name="searchword" id="search-searchword" size="30" value="'.$valor.'" class="inputbox" />', $templateHTML);
 
 				}
 			}
