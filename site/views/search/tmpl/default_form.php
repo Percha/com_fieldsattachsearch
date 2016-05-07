@@ -12,10 +12,10 @@ $lang = JFactory::getLanguage();
 $upper_limit = $lang->getUpperLimitSearchWord();
  
 JLoader::register('fieldattach',  JPATH_ROOT.DS.'components/com_fieldsattach/helpers/fieldattach.php');
-
+$Itemid = JRequest::getVar("Itemid");
 //           
 ?>
-<form id="searchForm" action="<?php echo JRoute::_('index.php?option=com_fieldsattachsearch');?>" method="post">
+<form id="searchForm" action="<?php echo JRoute::_("index.php?Itemid=".$Itemid);?>" method="post">
 	
 	<fieldset class="word">  
 		<?php echo $this->getForm();?>
