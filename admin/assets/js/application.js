@@ -4,7 +4,7 @@ var application = {
                     idfield:"",
                     wrapperid:"",
                     jsonfields:"",
-                    conditions:"LIKE,EQUAL,NOT EQUAL,EQUALANDHIGHER,HIGHER,LOWER,EQUALANDLOWER,BETWEEN"
+                    conditions:"LIKE,EQUAL,NOT EQUAL,EQUALANDHIGHER,HIGHER,LOWER,EQUALANDLOWER,BETWEEN,JOINTOTITLEANDTEXT"
 	  },
 	
 	  init: function(idfield, wrapperid) {

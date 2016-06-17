@@ -209,6 +209,7 @@ class FieldsattachsearchHelper
 						$templateHTML = str_replace("{field_".$object->fieldid."}",'<label for="">'.JText::_($object->title).'</label>'.$object->html, $templateHTML);
 
 					}else{
+
 						 
 						$tmpparameters = array();
 						$tmpparameters[]	= $object->fieldid;
@@ -219,9 +220,15 @@ class FieldsattachsearchHelper
 						
 						//REMOVE DIV WRAPPER CONTENT
 						$object->html = preg_replace("/<\/?div[^>]*\>/i", "", $object->html);
-						 
-						$templateHTML = str_replace("{field_".$object->fieldid."}",'<label for="">'.JText::_($object->title).'</label>'.$object->html, $templateHTML);
-						 
+
+						if($object->condition == "JOINTOTITLEANDTEXT")
+						{
+							$templateHTML = str_replace("{field_".$object->fieldid."}",'<input id="'.$object->fieldid.'" id="'.$object->fieldid.'" type="hidden">', $templateHTML);
+
+						 }else{
+						 	$templateHTML = str_replace("{field_".$object->fieldid."}",'<label for="">'.JText::_($object->title).'</label>'.$object->html, $templateHTML);
+
+						 }
 					}
 				}else{
 					$templateHTML = str_replace("{field_".$object->fieldid."}",'<div class="alert"><a class="close" data-dismiss="alert">×</a><strong>'.JText::_("COM_FIELDSATTACHSEARCH_INPUTERROR").'</strong></div>', $templateHTML);
