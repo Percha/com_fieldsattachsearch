@@ -71,6 +71,8 @@ class fieldsattachsearchViewsearch extends JViewLegacy
 	         $pagination->setAdditionalUrlParam($name, JRequest::getVar($name)); 
 	         
 	    }
+
+	     $pagination->setAdditionalUrlParam('searchword', JRequest::getVar('searchword'));
 		
 		
         //Add filter script
